@@ -1,0 +1,17 @@
+<html>
+	<head>
+	</head>
+<body ng-app="app">
+  <div ng-controller="mainCtrl">
+    <div ng-repeat="user in users">
+      <img ng-if="user.image" src="{{user.image}}">
+      <gravatar ng-if="!user.image && user.email" email="user.email"></gravatar>
+    </div>
+  </div>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+ <script src="md5.min.js"></script>
+ <script src="app.js"></script>
+</body>
+
+</html>
+
