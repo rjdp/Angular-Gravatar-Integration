@@ -12,7 +12,7 @@ app.directive('gravatar', function () {
       email: '='
     },
     link: function (scope) {
-    scope.url = 'http://www.gravatar.com/avatar/' + md5(scope.email) + ".jpg?&d=blank";
+    scope.url = 'http://www.gravatar.com/avatar/' + md5(scope.email.toLowerCase()) + ".jpg?&d=blank";
     }
   };
 });
