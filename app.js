@@ -8,11 +8,12 @@ app.directive('gravatar', function () {
   return {
     template: '<img style="z-index=1;background-color: lightblue;" ng-src="{{url}}"></img>',
     restrict: 'E',
-    scope: {
-      email: '='
-    },
-    link: function (scope) {
-    scope.url = 'http://www.gravatar.com/avatar/' + md5(scope.email.toLowerCase()) + ".jpg?&d=blank";
+    replace: true,
+    link: function (scope, element, attrs) {
+        scope.url = typeof scope.email === 'string' ? 'https://www.gravatar.com/avatar/' + md5(scope.email.toLowerCase()) + '.jpg?&d=blank&s=160' : '';
+        attrs.$observe('email', function(value) {
+            this.url = typeof value === 'string' ? 'https://www.gravatar.com/avatar/' + md5(value.toLowerCase()) + '.jpg?&d=blank&s=160' : '';
+        }.bind(scope));
     }
   };
 });
